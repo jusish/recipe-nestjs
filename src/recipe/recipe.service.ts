@@ -23,10 +23,15 @@ export class RecipeService {
   }
 
   update(id: number, updateRecipeDto: UpdateRecipeDto) {
-    return `This action updates a #${id} recipe`;
+    return this.prisma.recipe.update({
+      where: { id },
+      data: updateRecipeDto,
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} recipe`;
+    return this.prisma.recipe.delete({
+      where: { id },
+    });
   }
 }
